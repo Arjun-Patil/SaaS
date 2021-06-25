@@ -19,16 +19,10 @@ class Todo
     @due_date > Date.today
   end
 
-  def isCompleted?
-    if @completed == true
-      "X"
-    else
-      " "
-    end
-  end
-
   def to_displayable_string
-    @due_date == Date.today ? "[#{isCompleted?}] #{@text}" : "[#{isCompleted?}] #{@text} #{@due_date}"
+    display_status = @completed ? "[X]" : "[ ]"
+    display_date = @due_date == Date.today ? "" : @due_date
+    "#{display_status} #{@text} #{display_date}"
   end
 end
 
